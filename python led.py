@@ -10,48 +10,48 @@ def choose_Blink(on_time, off_time):
 
 		
 #.-.. --- .-. . -- / .. .--. ... ..- --
-
-while True:
-	choose_Blink(0.25,0.5)#l
-	choose_Blink(0.5,0.5)
-	choose_Blink(0.25,0.5)
-	choose_Blink(0.5,1)
+continu = True
+while continu:
+	for i in range(0, 2):
+		choose_Blink(0.25,0.5)#l
+		choose_Blink(0.5,0.5)
+		choose_Blink(0.25,0.5)
+		choose_Blink(0.5,1)
+		
+		choose_Blink(0.5,0.5)#o
+		choose_Blink(0.5,0.5)
+		choose_Blink(0.5,1)
+		
+		choose_Blink(0.25,0.5)#r
+		choose_Blink(0.50,0.5)
+		choose_Blink(0.25,1)
+		
+		choose_Blink(0.25,1)#e
+		
+		choose_Blink(0.5,0.5)#m
+		choose_Blink(0.5,2)
+		
+		
+		choose_Blink(0.25,0.5)#i
+		choose_Blink(0.25,1)
+		
+		choose_Blink(0.25,0.5)#p
+		choose_Blink(0.5,0.5)
+		choose_Blink(0.5,0.5)
+		choose_Blink(0.25,0.5)
+		
+		choose_Blink(0.25,0.5)#s
+		choose_Blink(0.25,0.5)
+		choose_Blink(0.25,1)
+		
+		choose_Blink(0.25,0.5)#u
+		choose_Blink(0.25,0.5)
+		choose_Blink(0.5,1)
+		
+		choose_Blink(0.5,0.5)#m
+		choose_Blink(0.5,1)
 	
-	choose_Blink(0.5,0.5)#o
-	choose_Blink(0.5,0.5)
-	choose_Blink(0.5,1)
-	
-	choose_Blink(0.25,0.5)#r
-	choose_Blink(0.50,0.5)
-	choose_Blink(0.25,1)
-	
-	choose_Blink(0.25,1)#e
-	
-	choose_Blink(0.5,0.5)#m
-	choose_Blink(0.5,2)
-	
-	
-	choose_Blink(0.25,0.5)#i
-	choose_Blink(0.25,1)
-	
-	choose_Blink(0.25,0.5)#p
-	choose_Blink(0.5,0.5)
-	choose_Blink(0.5,0.5)
-	choose_Blink(0.25,0.5)
-	
-	choose_Blink(0.25,0.5)#s
-	choose_Blink(0.25,0.5)
-	choose_Blink(0.25,1)
-	
-	choose_Blink(0.25,0.5)#u
-	choose_Blink(0.25,0.5)
-	choose_Blink(0.5,1)
-	
-	choose_Blink(0.5,0.5)#m
-	choose_Blink(0.5,1)
-	
-	#this signifies the looping
-	choose_Blink(0.05,0.1)
-	choose_Blink(0.05,0.1)
-	choose_Blink(0.05,1)
+	quit = input("Do you want to quit? (type yes to quit)")
+	if quit == 'yes':
+		continu = False
 	
