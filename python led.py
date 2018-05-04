@@ -2,20 +2,50 @@ from gpiozero import LED
 from time import sleep
 led = LED(2)
 
-#while True:
-#	led.on()
-#	sleep(1)
-#	led.off()
-#	sleep(1)
-	
 def choose_Blink(on_time, off_time):
-	while True:
-		led.on()
-		sleep(on_time)
-		led.off()
-		sleep(off_time)
+	led.on()
+	sleep(on_time)
+	led.off()
+	sleep(off_time)
 
 		
-duration1 = float(input("How many seconds should the LED stay on?\n"))
-duration2 = float(input("How many seconds should the LED stay off?\n"))
-choose_Blink(duration1, duration2)
+#.-.. --- .-. . -- / .. .--. ... ..- --
+
+while True:
+	choose_Blink(0.25,0.5)#l
+	choose_Blink(0.5,0.5)
+	choose_Blink(0.25,0.5)
+	choose_Blink(0.5,1)
+	
+	choose_Blink(0.5,0.5)#o
+	choose_Blink(0.5,0.5)
+	choose_Blink(0.5,1)
+	
+	choose_Blink(0.25,0.5)#r
+	choose_Blink(0.50,0.5)
+	choose_Blink(0.25,1)
+	
+	choose_Blink(0.25,1)#e
+	
+	choose_Blink(0.5,0.5)#m
+	choose_Blink(0.5,2)
+	
+	
+	choose_Blink(0.25,0.5)#i
+	choose_Blink(0.25,1)
+	
+	choose_Blink(0.25,0.5)#p
+	choose_Blink(0.5,0.5)
+	choose_Blink(0.5,0.5)
+	choose_Blink(0.25,0.5)
+	
+	choose_Blink(0.25,0.5)#s
+	choose_Blink(0.25,0.5)
+	choose_Blink(0.25,1)
+	
+	choose_Blink(0.25,0.5)#u
+	choose_Blink(0.25,0.5)
+	choose_Blink(0.5,1)
+	
+	choose_Blink(0.5,0.5)#m
+	choose_Blink(0.5,1)
