@@ -49,3 +49,9 @@ while True:
 	
 	choose_Blink(0.5,0.5)#m
 	choose_Blink(0.5,1)
+	
+	#this signifies the looping
+	choose_Blink(0.05,0.1)
+	choose_Blink(0.05,0.1)
+	choose_Blink(0.05,1)
+	
