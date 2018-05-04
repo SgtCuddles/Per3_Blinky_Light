@@ -18,4 +18,4 @@ def choose_Blink(on_time, off_time):
 		
 duration1 = float(input("How many seconds should the LED stay on?\n"))
 duration2 = float(input("How many seconds should the LED stay off?\n"))
-choose_Blink():
+choose_Blink(duration1, duration2):
