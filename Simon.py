@@ -30,9 +30,78 @@ button_nums = {
 	bbr: lbr
 }
 
-while True:
-	for button, light in button_nums.items():
-		if button.is_pressed:
-			light.on()
-			sleep(1)
-			light.off()
+
+def tester():
+	#while True:
+	#	for button, light in button_nums.items():
+	#		if button.is_pressed:
+	#			light.on()
+	#			sleep(1)
+	#			light.off()
+	for i in range(0,10):
+		display_num(i)
+		sleep(1)
+
+def startup():
+
+def display_num(to_display):
+	seg_a.on()
+	seg_b.on()
+	seg_c.on()
+	seg_d.on()
+	seg_e.on()
+	seg_f.on()
+	seg_g.on()
+	if num >= 1 and num <= 9:
+		if num == 1:
+			seg_b.on()
+			seg_c.on()
+		elif num == 2:
+			seg_a.on()
+			seg_b.on()
+			seg_d.on()
+			seg_e.on()
+			seg_g.on()
+		elif num == 3:
+			seg_a.on()
+			seg_b.on()
+			seg_c.on()
+			seg_d.on()
+			seg_g.on()
+		elif num == 4:
+			seg_b.on()
+			seg_c.on()
+			seg_f.on()
+			seg_g.on()
+		elif num == 5:
+			seg_a.on()
+			seg_c.on()
+			seg_d.on()
+			seg_f.on()
+			seg_g.on()
+		elif num == 6:
+			seg_a.on()
+			seg_c.on()
+			seg_d.on()
+			seg_e.on()
+			seg_f.on()
+			seg_g.on()
+		elif num == 7:
+			seg_a.on()
+			seg_b.on()
+			seg_c.on()
+		elif num == 8:
+			seg_a.on()
+			seg_b.on()
+			seg_c.on()
+			seg_d.on()
+			seg_e.on()
+			seg_f.on()
+			seg_g.on()
+		elif num == 9:
+			seg_a.on()
+			seg_b.on()
+			seg_c.on()
+			seg_d.on()
+			seg_f.on()
+			seg_g.on()
