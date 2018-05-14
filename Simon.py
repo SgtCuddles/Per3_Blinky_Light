@@ -44,6 +44,9 @@ def startup():
 			if button.is_pressed:
 				display_num(num)
 				cont = False
+	sleep(1)
+	display_num(9)
+	sleep(1)
 	
 
 def display_num(num):
