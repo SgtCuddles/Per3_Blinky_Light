@@ -32,7 +32,7 @@ button_nums = {
 
 while True:
 	for button, light in button_nums.items():
-		if button.when_pressed:
+		if button.is_pressed:
 			light.on()
 			sleep(1)
 			light.off()
