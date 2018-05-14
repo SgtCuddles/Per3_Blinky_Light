@@ -44,14 +44,14 @@ def tester():
 
 #def startup():
 
-def display_num(to_display):
-	seg_a.on()
-	seg_b.on()
-	seg_c.on()
-	seg_d.on()
-	seg_e.on()
-	seg_f.on()
-	seg_g.on()
+def display_num(num):
+	seg_a.off()
+	seg_b.off()
+	seg_c.off()
+	seg_d.off()
+	seg_e.off()
+	seg_f.off()
+	seg_g.off()
 	if num >= 1 and num <= 9:
 		if num == 1:
 			seg_b.on()
