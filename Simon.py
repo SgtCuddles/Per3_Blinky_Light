@@ -24,25 +24,26 @@ bbl = Button(16)
 bbr = Button(12)
 
 button_nums = {
-	btl: ltl,
-	btr: ltr,
-	bbl: lbl,
-	bbr: lbr
+	btl: 0,
+	btr: 1,
+	bbl: 2,
+	bbr: 3
 }
 
 
 def tester():
-	#while True:
-	#	for button, light in button_nums.items():
-	#		if button.is_pressed:
-	#			light.on()
-	#			sleep(1)
-	#			light.off()
 	for i in range(0,10):
 		display_num(i)
 		sleep(1)
 
-#def startup():
+def startup():
+	display_num(4)
+	while True:
+		for button, num in button_nums.items():
+			if button.is_pressed:
+				display_num(num)
+				break
+	
 
 def display_num(num):
 	seg_a.off()
@@ -52,8 +53,15 @@ def display_num(num):
 	seg_e.off()
 	seg_f.off()
 	seg_g.off()
-	if num >= 1 and num <= 9:
-		if num == 1:
+	if num >= 0 and num <= 9:
+		if num == 0:
+			seg_a.on()
+			seg_b.on()
+			seg_c.on()
+			seg_d.on()
+			seg_e.on()
+			seg_f.on()
+		elif num == 1:
 			seg_b.on()
 			seg_c.on()
 		elif num == 2:
