@@ -47,7 +47,7 @@ def startup():
 						difficulty -= 1
 					display_num(difficulty)
 				elif num == 1:
-				if difficulty < 9:
+					if difficulty < 9:
 						difficulty += 1
 					display_num(difficulty)
 				elif nun == 3:
