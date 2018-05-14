@@ -38,12 +38,12 @@ def tester():
 
 def startup():
 	display_num(4)
-	while True:
+	cont = True
+	while cont:
 		for button, num in button_nums.items():
 			if button.is_pressed:
 				display_num(num)
-				break
-		break
+				cont = False
 	
 
 def display_num(num):
