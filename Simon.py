@@ -42,7 +42,7 @@ def tester():
 		display_num(i)
 		sleep(1)
 
-def startup():
+#def startup():
 
 def display_num(to_display):
 	seg_a.on()
