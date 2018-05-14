@@ -38,7 +38,7 @@ def tester():
 
 def startup():
 	cont = True
-	
+	difficulty = 4
 	while cont:
 		for button, num in button_nums.items():
 			if button.is_pressed:
