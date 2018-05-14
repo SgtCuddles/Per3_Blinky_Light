@@ -105,3 +105,5 @@ def display_num(to_display):
 			seg_d.on()
 			seg_f.on()
 			seg_g.on()
+			
+tester()
