@@ -50,7 +50,7 @@ def startup():
 					if difficulty < 9:
 						difficulty += 1
 					display_num(difficulty)
-				elif nun == 3:
+				elif num == 3:
 					cont = False
 
 	
