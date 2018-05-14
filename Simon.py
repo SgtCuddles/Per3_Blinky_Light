@@ -115,5 +115,4 @@ def display_num(num):
 			seg_f.on()
 			seg_g.on()
 			
-tester()
 startup()
