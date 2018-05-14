@@ -39,6 +39,7 @@ def tester():
 def startup():
 	cont = True
 	difficulty = 4
+	display_num(difficulty)
 	while cont:
 		for button, num in button_nums.items():
 			if button.is_pressed:
@@ -123,5 +124,6 @@ def display_num(num):
 			seg_d.on()
 			seg_f.on()
 			seg_g.on()
+	sleep(0.5)
 			
 startup()
