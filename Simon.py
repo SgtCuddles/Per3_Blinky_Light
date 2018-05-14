@@ -42,9 +42,9 @@ sleep(1)
 led_bottom_r.off()
 
 button_top_l.wait_for_press()
-buzzer.on()
+buzz_buzz.on()
 sleep(1)
-buzzer.off()
+buzz_buzz.off()
 
 button_top_r.wait_for_press()
 seg_a.on()
