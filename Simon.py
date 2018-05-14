@@ -43,6 +43,7 @@ def startup():
 			if button.is_pressed:
 				display_num(num)
 				break
+		break
 	
 
 def display_num(num):
