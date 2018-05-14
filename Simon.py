@@ -37,16 +37,22 @@ def tester():
 		sleep(1)
 
 def startup():
-	display_num(4)
 	cont = True
+	
 	while cont:
 		for button, num in button_nums.items():
 			if button.is_pressed:
-				display_num(num)
-				cont = False
-	sleep(1)
-	display_num(9)
-	sleep(1)
+				if num == 0:
+					if difficulty > 0:
+						difficulty -= 1
+					display_num(difficulty)
+				elif num == 1:
+				if difficulty < 9:
+						difficulty += 1
+					display_num(difficulty)
+				elif nun == 3:
+					cont = False
+
 	
 
 def display_num(num):
