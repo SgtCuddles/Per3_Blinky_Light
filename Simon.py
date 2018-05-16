@@ -30,6 +30,19 @@ button_nums = {
 	bbr: 3
 }
 
+notes = {
+        'C': 261.6,
+        'Cs': 277.2,
+        'D': 293.7,
+        'Eb': 311.1,
+        'F': 329.6,
+        'Fs': 370.0,
+        'G': 392.0,
+        'Gs': 415.3,
+        'A': 440.0,
+        'Bb': 466.2,
+        'B': 493.9
+}
 
 def tester():
 	for i in range(0,10):
@@ -47,10 +60,12 @@ def startup():
 					if difficulty > 0:
 						difficulty -= 1
 					display_num(difficulty)
+					sleep(0.3)
 				elif num == 1:
 					if difficulty < 9:
 						difficulty += 1
 					display_num(difficulty)
+					sleep(0.3)
 				elif num == 3:
 					cont = False
 
@@ -124,6 +139,16 @@ def display_num(num):
 			seg_d.on()
 			seg_f.on()
 			seg_g.on()
-	sleep(0.5)
+
+def make_note(note, length):
+        frequency = notes[note]
+        delay_value = float((1.0/frequency)/2.0)
+        num_cycles = int(length * frequency)
+        for i in range(num_cycles):
+                buzz_buzz.on()
+                sleep(delay_value)
+                buzz_buzz.off()
+                sleep(delay_value)
+                
 			
 startup()
