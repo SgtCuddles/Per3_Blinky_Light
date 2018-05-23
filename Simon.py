@@ -2,6 +2,7 @@ from gpiozero import LED
 from gpiozero import Buzzer
 from gpiozero import Button
 from time import sleep
+from random import randint
 
 buzz_buzz = Buzzer(18)
 
@@ -30,19 +31,13 @@ button_nums = {
 	bbr: 3
 }
 
-notes = {
-        'C': 261.6,
-        'Cs': 277.2,
-        'D': 293.7,
-        'Eb': 311.1,
-        'F': 329.6,
-        'Fs': 370.0,
-        'G': 392.0,
-        'Gs': 415.3,
-        'A': 440.0,
-        'Bb': 466.2,
-        'B': 493.9
-}
+A = 440
+B = 493.883
+C = 523.251
+D = 587.33
+E = 659.255
+F = 698.456
+G = 783.991
 
 def tester():
 	for i in range(0,10):
@@ -51,27 +46,133 @@ def tester():
 
 def startup():
 	cont = True
-	difficulty = 4
+	difficulty = 2
 	display_num(difficulty)
 	while cont:
-		for button, num in button_nums.items():
-			if button.is_pressed:
-				if num == 0:
-					if difficulty > 0:
-						difficulty -= 1
-					display_num(difficulty)
-					sleep(0.3)
-				elif num == 1:
-					if difficulty < 9:
-						difficulty += 1
-					display_num(difficulty)
-					sleep(0.3)
-				elif num == 3:
-					cont = False
+		num = get_button_press()
+		if num == 0:
+			if difficulty > 1:
+				difficulty -= 1
+			display_num(difficulty)
+			sleep(0.3)
+		elif num == 1:
+			if difficulty < 4:
+				difficulty += 1
+			display_num(difficulty)
+			sleep(0.3)
+		elif num == 3:
+			cont = False
+	display_num()
+	if difficulty == 1:
+		difficulty = 5
+	elif difficulty == 2:
+		difficulty = 8
+	elif difficulty == 3:
+		difficulty = 12
+	else:
+		difficulty = 15
+	game(difficulty)
 
+def game(difficulty):
+	instructions = []
+	for i in range(difficulty):
+		instructions.append(randint(0,3))
+	lost = False
+	for i in range(difficulty):
+		for n in range(i):
+			if not lost:
+				if instructions[n] == 0:
+					ltl.on()
+					make_note(A, 0.5)
+					ltl.off()
+					sleep(0.3)
+				elif instructions[n] == 1:
+					ltr.on()
+					make_note(C, 0.5)
+					ltr.off()
+					sleep(0.3)
+				elif instructions[n] == 2:
+					lbl.on()
+					make_note(E, 0.5)
+					lbl.off()
+					sleep(0.3)
+				else:
+					lbr.on()
+					make_note(G, 0.5)
+					lbr.off()
+					sleep(0.3)
+
+		for n in range(i):
+			if not lost:
+				button = get_button_press()
+				if button != instructions[n]:
+					lost = True
+				elif button == 0:
+					ltl.on()
+					make_note(A, 0.3)
+				elif button == 1:
+					ltr.on()
+					make_note(C, 0.3)
+				elif button == 2:
+					lbl.on()
+					make_note(E, 0.3)
+				else:
+					lbr.on()
+					make_note(G, 0.3)
+				ltl.off()
+				ltr.off()
+				lbl.off()
+				lbr.off()
+				sleep(0.3)
+		sleep(0.5)
+	end(lost)
+
+def end(lost):
+	if lost:
+		print('You Lost')
+		display_letter('Y')
+		sleep(0.5)
+		display_letter('O')
+		sleep(0.5)
+		display_letter('U')
+		sleep(1)
+		display_letter('L')
+		sleep(0.5)
+		display_letter('O')
+		sleep(0.5)
+		display_letter('S')
+		sleep(0.5)
+		display_letter('E')
+		sleep(0.5)
+	else:
+		print('You Won')
+		display_letter('Y')
+		sleep(0.5)
+		ltl.on()
+		display_letter('O')
+		sleep(0.5)
+		ltr.on()
+		ltl.off()
+		display_letter('U')
+		sleep(1)
+		lbl.on()
+		ltr.off()
+		display_letter('W')
+		sleep(0.5)
+		lbr.on()
+		lbl.off()
+		display_letter('I')
+		sleep(0.5)
+		ltl.on()
+		lbr.off()
+		display_letter('N')
+		sleep(0.5)
+		ltl.off()
+		display_num()
+		
 	
 
-def display_num(num):
+def display_num(num=20):
 	seg_a.off()
 	seg_b.off()
 	seg_c.off()
@@ -140,15 +241,84 @@ def display_num(num):
 			seg_f.on()
 			seg_g.on()
 
+def display_letter(letter = 'b'):
+	seg_a.off()
+	seg_b.off()
+	seg_c.off()
+	seg_d.off()
+	seg_e.off()
+	seg_f.off()
+	seg_g.off()
+	if letter == 'Y':
+		seg_b.on()
+		seg_c.on()
+		seg_d.on()
+		seg_f.on()
+		seg_g.on()
+	elif letter == 'O':
+		seg_a.on()
+		seg_b.on()
+		seg_c.on()
+		seg_d.on()
+		seg_e.on()
+		seg_f.on()
+	elif letter == 'U':
+		seg_c.on()
+		seg_d.on()
+		seg_e.on()
+	elif letter == 'W':
+		seg_b.on()
+		seg_d.on()
+		seg_f.on()
+	elif letter == 'L':
+		seg_d.on()
+		seg_e.on()
+		seg_f.on()
+	elif letter == 'S':
+		seg_a.on()
+		seg_c.on()
+		seg_d.on()
+		seg_f.on()
+		seg_g.on()
+	elif letter == 'N':
+		seg_c.on()
+		seg_e.on()
+		seg_g.on()
+	elif letter == 'E':
+		seg_a.on()
+		seg_d.on()
+		seg_e.on()
+		seg_f.on()
+		seg_g.on()
+	elif letter == 'I':
+		seg_e.on()
+		seg_f.on()
+		
+
 def make_note(note, length):
-        frequency = notes[note]
-        delay_value = float((1.0/frequency)/2.0)
-        num_cycles = int(length * frequency)
-        for i in range(num_cycles):
-                buzz_buzz.on()
-                sleep(delay_value)
-                buzz_buzz.off()
-                sleep(delay_value)
-                
-			
-startup()
+	frequency = note
+	delay_value = float((1.0/frequency)/2.0)
+	num_cycles = int(length * frequency)
+	for i in range(num_cycles):
+		buzz_buzz.on()
+		sleep(delay_value)
+		buzz_buzz.off()
+		sleep(delay_value)
+	buzz_buzz.off()
+
+def get_button_press():
+	cont = True
+	while cont:
+		for button, num in button_nums.items():
+			if button.is_pressed:
+				cont = False
+				return num
+conti = 2
+while conti:
+        startup()
+        conti = get_button_press()
+        if get_button_press == 2:
+                conti = False
+                display_letter()
+        else:
+                sleep(0.3)
