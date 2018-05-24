@@ -66,7 +66,7 @@ def startup():
 			if difficulty < 9:
 				difficulty += 1
 			display_num(difficulty)
-			button_ids[button].wait_for_release()
+			button_ids[num].wait_for_release()
 		elif num == 3:
 			cont = False
 		elif num == 2:
