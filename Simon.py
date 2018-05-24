@@ -78,33 +78,38 @@ def startup():
 	game(difficulty * 3)
 
 def game(difficulty):
+        std_delay = 0.3
 	instructions = []
-	for i in range(difficulty):
+	for i in range(difficulty + 1):
 		instructions.append(randint(0,3))
 	lost = False
 	for i in range(difficulty):
+                if std_delay - i*0.01 != 0:
+                        std_delay -= i*0.01
+                else:
+                        std_delay = 0.01
 		for n in range(i):
 			if not lost:
 				if instructions[n] == 0:
 					ltl.on()
 					make_note(A, 0.5)
 					ltl.off()
-					sleep(0.3)
+					sleep(std_delay)
 				elif instructions[n] == 1:
 					ltr.on()
 					make_note(C, 0.5)
 					ltr.off()
-					sleep(0.3)
+					sleep(std_delay)
 				elif instructions[n] == 2:
 					lbl.on()
 					make_note(E, 0.5)
 					lbl.off()
-					sleep(0.3)
+					sleep(std_delay)
 				else:
 					lbr.on()
 					make_note(G, 0.5)
 					lbr.off()
-					sleep(0.3)
+					sleep(std_delay)
 
 		for n in range(i):
 			if not lost:
@@ -131,11 +136,12 @@ def game(difficulty):
 				button_ids[button].wait_for_release()
 				sleep(0.1)
 		if lost:
+                        end_point = i
                         break
 		sleep(0.5)
-	end(lost, difficulty)
+	end(lost, difficulty, end_point)
 
-def end(lost, difficulty):
+def end(lost, difficulty, end_point = 0):
 	if lost:
 		print('You Lost')
 		display_letter('Y')
@@ -153,6 +159,7 @@ def end(lost, difficulty):
 		display_letter('E')
 		sleep(0.5)
 		display_num()
+		print(end_point)
 	elif difficulty != 0:
 		print('You Won')
 		display_letter('Y')
@@ -163,7 +170,7 @@ def end(lost, difficulty):
 		ltr.on()
 		ltl.off()
 		display_letter('U')
-		sleep(1)
+                sleep(1)
 		lbl.on()
 		ltr.off()
 		display_letter('W')
@@ -178,6 +185,7 @@ def end(lost, difficulty):
 		sleep(0.5)
 		ltl.off()
 		display_num()
+		print(end_point)
 		
 	
 
@@ -191,6 +199,7 @@ def display_num(num=20):
 	seg_g.off()
 	if num >= 0 and num <= 9:
 		if num == 0:
+                        display_letter('U')
 			seg_a.on()
 			seg_b.on()
 			seg_c.on()
