@@ -61,11 +61,13 @@ def startup():
 			if difficulty > 1:
 				difficulty -= 1
 			display_num(difficulty)
-			sleep(0.3)
+			sleep(0.1)
+			button_ids[num].wait_for_release()
 		elif num == 1:
 			if difficulty < 9:
 				difficulty += 1
 			display_num(difficulty)
+			sleep(0.1)
 			button_ids[num].wait_for_release()
 		elif num == 3:
 			cont = False
@@ -127,6 +129,7 @@ def game(difficulty):
 				lbl.off()
 				lbr.off()
 				button_ids[button].wait_for_release()
+				sleep(0.1)
 		if lost:
                         break
 		sleep(0.5)
@@ -149,6 +152,7 @@ def end(lost, difficulty):
 		sleep(0.5)
 		display_letter('E')
 		sleep(0.5)
+		display_num()
 	elif difficulty != 0:
 		print('You Won')
 		display_letter('Y')
@@ -342,7 +346,7 @@ conti = 2
 while conti:
         startup()
         conti = get_button_press()
-        if get_button_press != 2:
+        if conti == 2:
                 conti = False
                 display_letter('G')
                 sleep(0.3)
