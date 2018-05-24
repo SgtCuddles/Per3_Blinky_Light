@@ -84,10 +84,10 @@ def game(difficulty):
 		instructions.append(randint(0,3))
 	lost = False
 	for i in range(difficulty):
-                if std_delay - i*0.01 != 0:
-                        std_delay -= i*0.01
+                if std_delay - 0.01 <= 0:
+                        std_delay -= 0.02
                 else:
-                        std_delay = 0.01
+                        std_delay = 0.02
 		for n in range(i):
 			if not lost:
 				if instructions[n] == 0:
@@ -135,8 +135,8 @@ def game(difficulty):
 				lbr.off()
 				button_ids[button].wait_for_release()
 				sleep(0.1)
+                end_point = i
 		if lost:
-                        end_point = i
                         break
 		sleep(0.5)
 	end(lost, difficulty, end_point)
