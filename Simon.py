@@ -31,6 +31,13 @@ button_nums = {
 	bbr: 3
 }
 
+button_ids = {
+        0: btl,
+        1: btr,
+        2: bbl,
+        3: bbr
+}
+
 A = 440
 B = 493.883
 C = 523.251
@@ -59,21 +66,13 @@ def startup():
 			if difficulty < 9:
 				difficulty += 1
 			display_num(difficulty)
-			sleep(0.3)
+			button_ids[button].wait_for_release()
 		elif num == 3:
 			cont = False
 		elif num == 2:
                         cont = False
                         difficulty = 0
 	display_num()
-##	if difficulty == 1:
-##		difficulty = 5
-##	elif difficulty == 2:
-##		difficulty = 8
-##	elif difficulty == 3:
-##		difficulty = 12
-##	else:
-##		difficulty = 15
 	game(difficulty * 3)
 
 def game(difficulty):
@@ -109,7 +108,8 @@ def game(difficulty):
 			if not lost:
 				button = get_button_press()
 				if button != instructions[n]:
-					lost = True
+                                        lost = True
+					break
 				elif button == 0:
 					ltl.on()
 					make_note(A, 0.3)
@@ -126,7 +126,9 @@ def game(difficulty):
 				ltr.off()
 				lbl.off()
 				lbr.off()
-				sleep(0.3)
+				button_ids[button].wait_for_release()
+		if lost:
+                        break
 		sleep(0.5)
 	end(lost, difficulty)
 
