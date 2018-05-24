@@ -56,22 +56,22 @@ def startup():
 			display_num(difficulty)
 			sleep(0.3)
 		elif num == 1:
-			if difficulty < 4:
+			if difficulty < 9:
 				difficulty += 1
 			display_num(difficulty)
 			sleep(0.3)
 		elif num == 3:
 			cont = False
 	display_num()
-	if difficulty == 1:
-		difficulty = 5
-	elif difficulty == 2:
-		difficulty = 8
-	elif difficulty == 3:
-		difficulty = 12
-	else:
-		difficulty = 15
-	game(difficulty)
+##	if difficulty == 1:
+##		difficulty = 5
+##	elif difficulty == 2:
+##		difficulty = 8
+##	elif difficulty == 3:
+##		difficulty = 12
+##	else:
+##		difficulty = 15
+	game(difficulty * 3)
 
 def game(difficulty):
 	instructions = []
