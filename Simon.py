@@ -46,7 +46,7 @@ def tester():
 
 def startup():
 	cont = True
-	difficulty = 2
+	difficulty = 3
 	display_num(difficulty)
 	while cont:
 		num = get_button_press()
@@ -62,6 +62,9 @@ def startup():
 			sleep(0.3)
 		elif num == 3:
 			cont = False
+		elif num == 2:
+                        cont = False
+                        difficulty = 0
 	display_num()
 ##	if difficulty == 1:
 ##		difficulty = 5
@@ -125,9 +128,9 @@ def game(difficulty):
 				lbr.off()
 				sleep(0.3)
 		sleep(0.5)
-	end(lost)
+	end(lost, difficulty)
 
-def end(lost):
+def end(lost, difficulty):
 	if lost:
 		print('You Lost')
 		display_letter('Y')
@@ -144,7 +147,7 @@ def end(lost):
 		sleep(0.5)
 		display_letter('E')
 		sleep(0.5)
-	else:
+	elif difficulty != 0:
 		print('You Won')
 		display_letter('Y')
 		sleep(0.5)
@@ -293,6 +296,26 @@ def display_letter(letter = 'b'):
 	elif letter == 'I':
 		seg_e.on()
 		seg_f.on()
+	elif letter == 'G':
+                seg_a.on()
+                seg_b.on()
+                seg_c.on()
+                seg_d.on()
+                seg_f.on()
+                seg_g.on()
+        elif letter == 'D':
+                seg_b.on()
+                seg_c.on()
+                seg_d.on()
+                seg_e.on()
+                seg_g.on()
+        elif letter == 'B':
+                seg_c.on()
+                seg_d.on()
+                seg_e.on()
+                seg_f.on()
+                seg_g.on()
+        
 		
 
 def make_note(note, length):
@@ -317,8 +340,19 @@ conti = 2
 while conti:
         startup()
         conti = get_button_press()
-        if get_button_press == 2:
+        if get_button_press != 2:
                 conti = False
-                display_letter()
+                display_letter('G')
+                sleep(0.3)
+                display_letter('O')
+                sleep(0.6)
+                display_letter('D')
+                sleep(0.3)
+                display_letter('B')
+                sleep(0.3)
+                display_letter('Y')
+                sleep(0.3)
+                display_letter('E')
+                sleep(0.3)
         else:
                 sleep(0.3)
