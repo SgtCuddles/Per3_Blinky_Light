@@ -196,8 +196,6 @@ def end(lost, difficulty, end_point = 0):
 		display_num()
 		print(end_point)
 		
-	
-
 def display_num(num=20):
 	seg_a.off()
 	seg_b.off()
@@ -340,8 +338,6 @@ def display_letter(letter = 'b'):
                 seg_f.on()
                 seg_g.on()
         
-		
-
 def make_note(note, length):
 	frequency = note
 	delay_value = float((1.0/frequency)/2.0)
