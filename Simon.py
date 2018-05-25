@@ -169,7 +169,7 @@ def end(lost, difficulty, end_point = 0):
 		sleep(0.5)
 		display_num()
 		print(end_point)
-	elif difficulty != 0:
+	elif difficulty - 1 != 0:
 		print('You Won')
 		display_letter('Y')
 		sleep(0.5)
