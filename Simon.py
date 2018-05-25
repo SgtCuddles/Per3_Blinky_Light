@@ -76,10 +76,13 @@ def startup():
                         cont = False
                         difficulty = 0
 	display_num()
-	game(difficulty * 3)
+	if difficulty != 9:
+                game((difficulty * 3) + 1)
+        else:
+                game(100)
 
 def game(difficulty):
-        std_delay = 0.3
+        std_delay = 0.4
 	instructions = []
 	end_point = 0
 	for i in range(difficulty + 1):
