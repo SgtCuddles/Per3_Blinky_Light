@@ -25,6 +25,7 @@ bbl = Button(16)
 bbr = Button(12)
 
 button_nums = {
+        
 	btl: 0,
 	btr: 1,
 	bbl: 2,
@@ -80,6 +81,7 @@ def startup():
 def game(difficulty):
         std_delay = 0.3
 	instructions = []
+	end_point = 0
 	for i in range(difficulty + 1):
 		instructions.append(randint(0,3))
 	lost = False
@@ -134,7 +136,7 @@ def game(difficulty):
 				lbl.off()
 				lbr.off()
 				button_ids[button].wait_for_release()
-				sleep(0.1)
+                        	sleep(0.1)
                 end_point = i
 		if lost:
                         break
