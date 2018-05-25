@@ -97,23 +97,27 @@ def game(difficulty):
 			if not lost:
 				if instructions[n] == 0:
 					ltl.on()
-					make_note(A, 0.5)
+					make_note(A, 0.25)
 					ltl.off()
+					make_note(A, 0.25)
 					sleep(std_delay)
 				elif instructions[n] == 1:
 					ltr.on()
-					make_note(C, 0.5)
+					make_note(C, 0.25)
 					ltr.off()
+					make_note(C, 0.25)
 					sleep(std_delay)
 				elif instructions[n] == 2:
 					lbl.on()
-					make_note(E, 0.5)
+					make_note(E, 0.25)
 					lbl.off()
+					make_note(E, 0.25)
 					sleep(std_delay)
 				else:
 					lbr.on()
-					make_note(G, 0.5)
+					make_note(G, 0.25)
 					lbr.off()
+					make_note(G, 0.25)
 					sleep(std_delay)
 
 		for n in range(i):
