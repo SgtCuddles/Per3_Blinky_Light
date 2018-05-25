@@ -54,7 +54,7 @@ def tester():
 
 def startup():
 	cont = True
-	difficulty = 3
+	difficulty = 4
 	display_num(difficulty)
 	while cont:
 		num = get_button_press()
