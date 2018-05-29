@@ -65,9 +65,12 @@ def startup():
 			sleep(0.1)
 			button_ids[num].wait_for_release()
 		elif num == 1:
-			if difficulty < 9:
+			if difficulty < 10:
 				difficulty += 1
-			display_num(difficulty)
+			if difficulty == 10:
+                                display_letter('H')
+                        else:
+                                display_num(difficulty)
 			sleep(0.1)
 			button_ids[num].wait_for_release()
 		elif num == 3:
@@ -76,49 +79,48 @@ def startup():
                         cont = False
                         difficulty = 0
 	display_num()
-	if difficulty != 9:
+	if difficulty != 10:
                 game((difficulty * 3) + 1)
         else:
-                game(100)
+                game(100, 0.05)
 
-def game(difficulty):
-        std_delay = 0.4
+def game(difficulty, std_delay = 0.5):
 	instructions = []
 	end_point = 0
 	for i in range(difficulty + 1):
 		instructions.append(randint(0,3))
 	lost = False
 	for i in range(difficulty):
-                if std_delay - 0.01 <= 0:
-                        std_delay -= 0.02
+                if std_delay - 0.05 >= 0.1:
+                        std_delay -= 0.05
                 else:
-                        std_delay = 0.02
+                        std_delay = 0.05
 		for n in range(i):
 			if not lost:
 				if instructions[n] == 0:
 					ltl.on()
-					make_note(A, 0.25)
+					make_note(A, std_delay)
 					ltl.off()
-					make_note(A, 0.25)
-					sleep(std_delay)
+					make_note(A, std_delay)
+					sleep(0.1)
 				elif instructions[n] == 1:
 					ltr.on()
-					make_note(C, 0.25)
+					make_note(C, std_delay)
 					ltr.off()
-					make_note(C, 0.25)
-					sleep(std_delay)
+					make_note(C, std_delay)
+					sleep(0.1)
 				elif instructions[n] == 2:
 					lbl.on()
-					make_note(E, 0.25)
+					make_note(E, std_delay)
 					lbl.off()
-					make_note(E, 0.25)
-					sleep(std_delay)
+					make_note(E, std_delay)
+					sleep(0.1)
 				else:
 					lbr.on()
-					make_note(G, 0.25)
+					make_note(G, std_delay)
 					lbr.off()
-					make_note(G, 0.25)
-					sleep(std_delay)
+					make_note(G, std_delay)
+					sleep(0.1)
 
 		for n in range(i):
 			if not lost:
@@ -168,7 +170,7 @@ def end(lost, difficulty, end_point = 0):
 		display_letter('E')
 		sleep(0.5)
 		display_num()
-		print(end_point)
+		print(end_point - 1)
 	elif difficulty - 1 != 0:
 		print('You Won')
 		display_letter('Y')
@@ -194,7 +196,7 @@ def end(lost, difficulty, end_point = 0):
 		sleep(0.5)
 		ltl.off()
 		display_num()
-		print(end_point)
+		print(end_point - 1)
 		
 def display_num(num=20):
 	seg_a.off()
@@ -334,6 +336,12 @@ def display_letter(letter = 'b'):
         elif letter == 'B':
                 seg_c.on()
                 seg_d.on()
+                seg_e.on()
+                seg_f.on()
+                seg_g.on()
+        elif letter == 'H':
+                seg_b.on()
+                seg_c.on()
                 seg_e.on()
                 seg_f.on()
                 seg_g.on()
